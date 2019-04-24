@@ -1,3 +1,5 @@
+/* GENERIC STUFF */
+
 body{
     margin: 0%;
 }
@@ -15,6 +17,8 @@ body{
     margin: 0%;
 }
 
+/* SIDE BAR STUFF */
+
 .sidebar{
     margin: 0%;
     background-color : #a0a0a0;
@@ -26,10 +30,17 @@ body{
     position: fixed;
 }
 
+.sb_collapse_top button{
+    float: right;
+    width: 16px;
+}
+
 /* the class to contain everything not in the sidebar */
 .rightside{
     margin-left : 300px; /* should equal to sidebar width */
 }
+
+/* ARTICLE STUFF */
 
 .article{
     margin: 60px;

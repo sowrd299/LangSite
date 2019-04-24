@@ -1,6 +1,7 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'articles/style.css' %}"/>
+<script type="text/javascript" src="{% static 'articles/collapsible.js' %}"></script>
  
 <div class="maincontent">
 
@@ -9,7 +10,11 @@
 <div class="sidebar">
     <ul>
     {% for topic in topics %}
-        <li class="topic"><a href="{% url 'articles:article' topic %}">{{ topic }}</a>
+        <li class="topic">
+            <div class="sb_collapse_top">
+                <a href="{% url 'articles:article' topic %}">{{ topic }}</a>
+                <button class="sb_collapse" onclick="toggle_collapse_id('subtopic_{{ topic }}')">V</button>
+            </div>
             <ul class="subtopics" id="subtopic_{{ topic }}">
                 <!-- list each topic's subtopics -->
                 {% for subtopic in topic.subtopics %}
@@ -46,7 +51,7 @@
 
     <h1> Hi! Read what we wrote about {{ article_id }}! </h1>
     <p>
-        {{ article_id.text }}
+        {{ article_id.text|safe }}
         <!-- some things to hyper-link to-->
         {% for subtopic in article_id.subtopics %}
             <div id="{{ subtopic }}"/>
