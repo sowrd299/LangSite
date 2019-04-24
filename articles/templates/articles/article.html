@@ -9,15 +9,41 @@
 <div class="sidebar">
     <ul>
     {% for topic in topics %}
-        <li><a href="{% url 'articles:article' topic %}">{{ topic }}</a></li>
+        <li class="topic"><a href="{% url 'articles:article' topic %}">{{ topic }}</a>
+            <ul class="subtopics" id="subtopic_{{ topic }}">
+                <!-- list each topic's subtopics -->
+                {% for subtopic in topic.subtopics %}
+                    <li class="subtopic">
+                        <a href="{% url 'articles:article' topic %}#{{ subtopic }}">
+                            {{ subtopic }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
     {% endfor %}
     </ul>
 </div>
+
+<!-- Use class rideside if have a sidebar
+    else us a generic div to contain the rest of the content -->
+<div class="rightside">
+{% else %}
+<div>
 {% endif %}
+
+
+<!-- the website Header -->
+<div class="top">
+    <h1>Welcome to Our Website!</h1>
+    <h2>Site by team Tokyodachi</h2>
+</div>
 
 {% if article_id %}
 <!-- THE ARTICLE PROPPER -->
 <div class="article">
+
+
     <h1> Hi! Read what we wrote about {{ article_id }}! </h1>
     <p>
         <!-- some lorem ipsum -->
@@ -30,6 +56,10 @@ Nulla ornare leo eu nunc tristique accumsan. Etiam eu risus non nulla pharetra v
 Cras viverra felis id arcu volutpat lacinia. Aliquam erat volutpat. Nam ut rutrum dolor. Proin id erat turpis. Vestibulum non molestie dolor, vitae pulvinar nunc. Duis eu mi sed eros varius accumsan non at ipsum. Curabitur quis purus viverra, molestie magna a, varius arcu. Sed congue lorem eu enim porttitor, sit amet dapibus eros laoreet. Donec hendrerit orci et leo maximus, pharetra rutrum augue porttitor. Donec id mauris sed lectus tristique tristique eu eu libero.
 
 Vestibulum egestas tempor quam vitae congue. Pellentesque a molestie ipsum. Nulla molestie neque nec viverra dictum. Mauris quis orci sapien. Pellentesque accumsan imperdiet dui a cursus. Nunc eget nisi non arcu viverra faucibus luctus ut odio. Ut id gravida arcu. Mauris dapibus, lacus vitae tincidunt tempor, neque nibh malesuada tortor, eu bibendum odio nisi vel quam. Donec commodo, arcu id accumsan cursus, magna magna rutrum ex, eget laoreet ipsum libero ac felis. Cras lectus leo, sodales nec vehicula sed, vestibulum vitae enim. Morbi neque mauris, faucibus non feugiat ut, lobortis eu erat. 
+        <!-- some things to hyper-link to-->
+        {% for subtopic in article_id.subtopics %}
+            <div id="{{ subtopic }}"/>
+        {% endfor %}
     </p>
     {% else %}
     <p> Sorry, that's sound like an interesting topic,
@@ -37,5 +67,7 @@ Vestibulum egestas tempor quam vitae congue. Pellentesque a molestie ipsum. Null
     </p>
 </div>
 {% endif %}
+
+</div>
 
 </div>

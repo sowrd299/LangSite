@@ -2,6 +2,14 @@ body{
     margin: 0%;
 }
 
+.top{
+    margin: 0;
+    padding: 16px;
+    background-color: red;
+    color: blue;
+    box-shadow: 4px #000000;
+}
+
 .maincontent{
     padding: 0%;
     margin: 0%;
@@ -18,8 +26,13 @@ body{
     position: fixed;
 }
 
+/* the class to contain everything not in the sidebar */
+.rightside{
+    margin-left : 300px; /* should equal to sidebar width */
+}
+
 .article{
-    margin-left : 360px; /* should equal to sidebar width */
+    margin: 60px;
     padding-left : 5%;
     padding-right : 5%;
     padding-top : 1%;
