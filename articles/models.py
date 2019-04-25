@@ -15,8 +15,18 @@ class Topic(models.Model):
     def subtopics(self):
         return self.subtopic_set.all()
 
+class Subtopic(models.Model):
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    name = models.CharField(max_length=64)
+    #text = models.TextField()
+
+    # this allows us to ref the object itself in a template to get it's name
+    def __str__(self):
+        return self.name
+
+    # placehold implementation, just spits out lorem ipsum
+    # real implementation is commented out above
     def text(self):
-        # placehold implementation, just spits out lorem ipsum
         return '''
         <!-- some lorem ipsum -->
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac aliquet lorem, ultricies auctor sapien. Morbi non dui quis est convallis volutpat. Vestibulum convallis sapien eu placerat malesuada. Nam bibendum dictum pulvinar. Vestibulum eleifend interdum malesuada. Donec pulvinar orci vitae dignissim ullamcorper. Curabitur auctor molestie eleifend. Curabitur posuere tellus nec elementum cursus. Nulla ut ligula a diam volutpat imperdiet. Vestibulum auctor elit risus, eu suscipit justo molestie in. Proin maximus elementum purus in commodo.
@@ -31,14 +41,6 @@ Cras viverra felis id arcu volutpat lacinia. Aliquam erat volutpat. Nam ut rutru
 
 Vestibulum egestas tempor quam vitae congue. Pellentesque a molestie ipsum. Nulla molestie neque nec viverra dictum. Mauris quis orci sapien. Pellentesque accumsan imperdiet dui a cursus. Nunc eget nisi non arcu viverra faucibus luctus ut odio. Ut id gravida arcu. Mauris dapibus, lacus vitae tincidunt tempor, neque nibh malesuada tortor, eu bibendum odio nisi vel quam. Donec commodo, arcu id accumsan cursus, magna magna rutrum ex, eget laoreet ipsum libero ac felis. Cras lectus leo, sodales nec vehicula sed, vestibulum vitae enim. Morbi neque mauris, faucibus non feugiat ut, lobortis eu erat. 
         '''
-
-class Subtopic(models.Model):
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
-    name = models.CharField(max_length=64)
-
-    # this allows us to ref the object itself in a template to get it's name
-    def __str__(self):
-        return self.name
 
 '''
 topics = {

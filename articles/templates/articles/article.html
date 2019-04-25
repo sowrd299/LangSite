@@ -50,14 +50,17 @@
 
 
     <h1> Hi! Read what we wrote about {{ article_id }}! </h1>
-    <p>
-        {{ article_id.text|safe }}
-        <!-- some things to hyper-link to-->
-        {% for subtopic in article_id.subtopics %}
-            <div id="{{ subtopic }}"/>
-        {% endfor %}
-    </p>
-    {% else %}
+    <!-- some things to hyper-link to-->
+    {% for subtopic in article_id.subtopics %}
+        <div id="{{ subtopic }}">
+            <h3>{{ subtopic }}</h3>
+
+            <p>
+            {{ subtopic.text|safe }}
+            </p>
+        </div>
+    {% endfor %}
+{% else %}
     <p> Sorry, that's sound like an interesting topic,
         but we didn't have time to research it.
     </p>
