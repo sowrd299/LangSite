@@ -6,36 +6,7 @@
 <div class="maincontent">
 
 {% if topics %}
-<!-- SIDEBAR of TOPICS -->
-<div class="sidebar">
-    <ol>
-    {% for topic in topics %}
-        <li class="topic" onmouseover="temp_expand_id('subtopic_{{ topic }}')" onmouseout="end_temp_expand_id('subtopic_{{ topic }}')">
-            <div class="sb_collapse_top">
-                <a href="{% url 'articles:article' topic %}">{{ topic }}</a>
-                <button class="sb_collapse" onclick="toggle_collapse_id('subtopic_{{ topic }}')">V</button>
-            </div>
-            <ol class="subtopics" id="subtopic_{{ topic }}">
-                <!-- list each topic's subtopics -->
-                {% for subtopic in topic.subtopics %}
-                    <li class="subtopic">
-                        <a href="{% url 'articles:article' topic %}#{{ subtopic }}">
-                            {{ subtopic|safe }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ol>
-            <!-- run this line of code to start collapsed -->
-            <script type="text/javascript">toggle_collapse_id('subtopic_{{ topic }}');</script>
-        </li>
-    {% endfor %}
-    </ol>
-    <!-- TODO: put an expand-all button here~ish -->
-</div>
-
-<!-- Use class rideside if have a sidebar
-    else us a generic div to contain the rest of the content -->
-<div class="rightside">
+    {% include "articles/sidebar.html" %}
 {% else %}
 <div>
 {% endif %}

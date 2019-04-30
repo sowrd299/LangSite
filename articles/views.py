@@ -20,3 +20,7 @@ class ArticleView(TemplateView):
             context['article_id'] = None
         context['topics'] = Topic.objects.all()
         return context
+
+class QuizView(TemplateView):
+
+    pass
