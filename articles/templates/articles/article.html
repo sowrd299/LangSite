@@ -20,7 +20,7 @@
                 {% for subtopic in topic.subtopics %}
                     <li class="subtopic">
                         <a href="{% url 'articles:article' topic %}#{{ subtopic }}">
-                            {{ subtopic }}
+                            {{ subtopic|safe }}
                         </a>
                     </li>
                 {% endfor %}
@@ -53,7 +53,7 @@
     <!-- some things to hyper-link to-->
     {% for subtopic in article_id.subtopics %}
         <div id="{{ subtopic }}">
-            <h3>{{ subtopic }}</h3>
+            <h3>{{ subtopic|safe }}</h3>
 
             <p>
             {{ subtopic.text|safe }}

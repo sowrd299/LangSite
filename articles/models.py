@@ -18,7 +18,7 @@ class Topic(models.Model):
 class Subtopic(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     name = models.CharField(max_length=64)
-    #text = models.TextField()
+    text = models.TextField(default = "<p>ERROR: TEXT MISSING</p>")
 
     # this allows us to ref the object itself in a template to get it's name
     def __str__(self):
@@ -26,7 +26,7 @@ class Subtopic(models.Model):
 
     # placehold implementation, just spits out lorem ipsum
     # real implementation is commented out above
-    def text(self):
+    def text_lorem_ipsum(self):
         return '''
         <!-- some lorem ipsum -->
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac aliquet lorem, ultricies auctor sapien. Morbi non dui quis est convallis volutpat. Vestibulum convallis sapien eu placerat malesuada. Nam bibendum dictum pulvinar. Vestibulum eleifend interdum malesuada. Donec pulvinar orci vitae dignissim ullamcorper. Curabitur auctor molestie eleifend. Curabitur posuere tellus nec elementum cursus. Nulla ut ligula a diam volutpat imperdiet. Vestibulum auctor elit risus, eu suscipit justo molestie in. Proin maximus elementum purus in commodo.
