@@ -8,14 +8,14 @@
 {% if topics %}
 <!-- SIDEBAR of TOPICS -->
 <div class="sidebar">
-    <ul>
+    <ol>
     {% for topic in topics %}
-        <li class="topic">
+        <li class="topic" onmouseover="temp_expand_id('subtopic_{{ topic }}')" onmouseout="end_temp_expand_id('subtopic_{{ topic }}')">
             <div class="sb_collapse_top">
                 <a href="{% url 'articles:article' topic %}">{{ topic }}</a>
                 <button class="sb_collapse" onclick="toggle_collapse_id('subtopic_{{ topic }}')">V</button>
             </div>
-            <ul class="subtopics" id="subtopic_{{ topic }}">
+            <ol class="subtopics" id="subtopic_{{ topic }}">
                 <!-- list each topic's subtopics -->
                 {% for subtopic in topic.subtopics %}
                     <li class="subtopic">
@@ -24,10 +24,13 @@
                         </a>
                     </li>
                 {% endfor %}
-            </ul>
+            </ol>
+            <!-- run this line of code to start collapsed -->
+            <script type="text/javascript">toggle_collapse_id('subtopic_{{ topic }}');</script>
         </li>
     {% endfor %}
-    </ul>
+    </ol>
+    <!-- TODO: put an expand-all button here~ish -->
 </div>
 
 <!-- Use class rideside if have a sidebar
