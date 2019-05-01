@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import FormView
 from django.core import exceptions
 
 from .models import *
+from .forms import *
 
 # the actual view 
 class ArticleView(TemplateView):
@@ -21,6 +23,19 @@ class ArticleView(TemplateView):
         context['topics'] = Topic.objects.all()
         return context
 
-class QuizView(TemplateView):
+#TODO: the degree that quiz should be it's own app is large
+class QuizView(FormView):
 
-    pass
+    template_name = 'articles/article.html'
+    form_class = QuizForm
+    success_url = '/articles/quiz/' # TODO: use the URL lib. to handle this
+
+    # TODO: does this actually get called in FormView?
+    '''
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+    '''
+
+    def form_valid(self, form):
+        return super().form_valid(form)
