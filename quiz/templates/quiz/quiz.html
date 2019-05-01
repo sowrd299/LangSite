@@ -1,5 +1,6 @@
 {% load static %}
 
+<span> {{ question }} <br/></span><br/>
 <form action="{% url 'quiz:random_question' %}" method="post">
     {% csrf_token %}
     {{ form }}

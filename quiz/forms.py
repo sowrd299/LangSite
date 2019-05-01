@@ -1,8 +1,13 @@
 from django import forms
 
-from .forms import *
-
 class QuizForm(forms.Form):
 
-    choices = zip(range(3), ("A", "B", "C"))
-    answer = forms.ChoiceField(label="Select your answer", choices=choices, widget=forms.RadioSelect)
+    def __init__(self, question, *args, **kwargs):
+        #question = kwargs.pop('question')
+        super().__init__(*args, **kwargs)
+
+        # get the answers to the given question
+        answers = question.answer_set.all()
+        # format the answers for the form
+        choices = zip(range(len(answers)), answers)
+        self.fields['answer'] = forms.ChoiceField(label="Select your answer", choices=choices, widget=forms.RadioSelect)
