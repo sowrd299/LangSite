@@ -1,8 +1,38 @@
 {% load static %}
 
-<span> {{ question }} <br/></span><br/>
-<form action="{% url 'quiz:random_question' %}" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Answer"/>
-</form>
+<link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'articles/style.css' %}"/> <!-- TENTACLES!! -->
+
+{%if topics %}
+    {% include "articles/sidebar.html" %}
+{% else %}
+    <div>
+{% endif %}
+
+<div class="quizContainer"
+<!-- the answer to the previous question -->
+{% if prev_answer %}
+    {% if prev_answer.correct %}
+    <div class="quiz right">
+        <p> "{{ prev_answer }}" was the correct answer! </p>
+    {% else %}
+    <div class="quiz wrong">
+        <p> Sorry, "{{ prev_answer }}" wasn't the correct answer. </p>
+    {% endif %}
+    <!-- TODO: link to more information about the topic -->
+    </div>
+{% endif %}
+
+<!-- the next question -->
+<div class="quiz">
+    <h2>Question:</h2>
+    <span> {{ question }} <br/></span><br/>
+    <form action="{% url 'quiz:random_question' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Answer"/>
+    </form>
+</div>
+</div>
+
+</div> <!-- close the div from sidebar -->

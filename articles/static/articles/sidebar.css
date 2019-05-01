@@ -62,5 +62,5 @@ li.topic:nth-child(even) .sb_collapse_top{
 
 /* the class to contain everything not in the sidebar */
 .rightside{
-    margin-left : 300px; /* should equal to sidebar width */
+    margin-left: 300px; /* should equal to sidebar width */
 }

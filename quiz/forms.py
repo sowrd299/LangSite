@@ -9,5 +9,7 @@ class QuizForm(forms.Form):
         # get the answers to the given question
         answers = question.answer_set.all()
         # format the answers for the form
-        choices = zip(range(len(answers)), answers)
+        # choices = zip(range(len(answers)), answers)
+        choices = tuple( (x.id, x) for x in answers )
+
         self.fields['answer'] = forms.ChoiceField(label="Select your answer", choices=choices, widget=forms.RadioSelect)
