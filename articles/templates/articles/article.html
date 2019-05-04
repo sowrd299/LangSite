@@ -2,14 +2,13 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'articles/style.css' %}"/>
  
-<div class="maincontent">
-
 {% if topics %}
     {% include "articles/sidebar.html" %}
 {% else %}
 <div>
 {% endif %}
 
+<div class="pagecontent">
 
 <!-- the website Header -->
 <div class="top">
