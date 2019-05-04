@@ -9,7 +9,12 @@
     <div>
 {% endif %}
 
-<div class="quizContainer"
+<div class="pagecontent">
+<div class="top">
+    <h1>Quiz!</h1>
+</div>
+<div class="article">
+<div class="quizContainer">
 <!-- the answer to the previous question -->
 {% if prev_answer %}
     {% if prev_answer.correct %}
@@ -34,5 +39,8 @@
     </form>
 </div>
 </div>
+</div>
+</div>
+
 
 </div> <!-- close the div from sidebar -->

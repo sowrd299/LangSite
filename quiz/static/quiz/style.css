@@ -5,16 +5,16 @@
 .quiz{
     padding: 16px;
     margin: 16px;
-    background: #777575;
+    background: #a5a2a2;
     border-radius: 16px;
 }
 
 .quiz.right{
-    background: #709060;
+    background: #abdb93;
     color: #002000;
 }
 
 .quiz.wrong{
-    background: #a06060;
+    background: #e98d8d;
     color: #200000;
 }
