@@ -23,6 +23,12 @@
     font-weight: bold;
 }
 
+.sidebar img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* collapse top */
 li.topic{
     margin-left: 0;

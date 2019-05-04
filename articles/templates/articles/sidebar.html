@@ -28,6 +28,9 @@
     {% endfor %}
     </ol>
     <!-- TODO: put an expand-all button here~ish -->
+    <a href="{% url 'quiz:random_question' %}">
+        <img src="{% static 'articles/images/button_quiz.png' %}"/>
+    </a>
 </div>
 
 <!-- Use class rideside if have a sidebar
