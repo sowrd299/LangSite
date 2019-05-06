@@ -1,0 +1,20 @@
+.quizContainer{
+    padding: 7%;
+}
+
+.quiz{
+    padding: 16px;
+    margin: 16px;
+    background: #a5a2a2;
+    border-radius: 16px;
+}
+
+.quiz.right{
+    background: #abdb93;
+    color: #002000;
+}
+
+.quiz.wrong{
+    background: #e98d8d;
+    color: #200000;
+}
