@@ -12,8 +12,8 @@
 
 <!-- the website Header -->
 <div class="top">
-    <h1>Welcome to Our Website!</h1>
-    <h2>Site by team Tokyodachi</h2>
+    <h1>Bilingual Education in America</h1>
+    <h3>Site by team Tokyodachi</h3>
 </div>
 
 {% if article_id %}
@@ -21,7 +21,7 @@
 <div class="article">
 
 
-    <h1> Hi! Read what we wrote about {{ article_id }}! </h1>
+    <h1> {{ article_id }} </h1>
     <!-- some things to hyper-link to-->
     {% for subtopic in article_id.subtopics %}
         <div id="{{ subtopic }}">

@@ -5,6 +5,9 @@ from .models import Question
 from .models import Answer
 from articles.models import Topic
 
+from random import randint
+from django.db.models.aggregates import Count
+
 # Create your views here.
 
 # view a quiz question
@@ -12,7 +15,11 @@ def quiz(request):
     
     context = dict()
 
-    question = Question.objects.get(prompt="How much wood would a wood check chuck if a wood chuck could chuck wood?")
+    # rand int
+    # code thanks to https://stackoverflow.com/questions/962619/how-to-pull-a-random-record-using-djangos-orm
+    count = Question.objects.aggregate(count=Count('id'))['count']
+    random_index = randint(0, count - 1)
+    question = Question.objects.all()[random_index]
 
     if request.method == 'POST':
         # handle answer questions

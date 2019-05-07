@@ -1,4 +1,5 @@
 from django.db import models
+from random import randint
 
 # a question in the quiz
 class Question(models.Model):
@@ -6,6 +7,7 @@ class Question(models.Model):
 
     def __str__(self):
         return self.prompt
+
 
 # an answer to a question in the quiz
 class Answer(models.Model):
